@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Suparna! ❤️</title>
+  <!-- Google Fonts for romantic typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #feada6 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Card Container */
+    .container {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+      width: 100%;
+      max-width: 500px;
+      padding: 30px 20px;
+      text-align: center;
+      z-index: 10;
+      position: relative;
+    }
+
+    /* Headings */
+    h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.8rem;
+      color: #e63946;
+      margin-bottom: 5px;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+
+    .subtitle {
+      font-size: 1rem;
+      color: #666;
+      margin-bottom: 20px;
+      font-weight: 300;
+    }
+
+    /* Slideshow styling */
+    .slideshow-container {
+      position: relative;
+      width: 100%;
+      height: 420px;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      margin-bottom: 20px;
+    }
+
+    .slide {
+      display: none;
+      width: 100%;
+      height: 100%;
+      animation: fade 1.5s ease-in-out;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+    }
+
+    @keyframes fade {
+      from { opacity: 0.4; transform: scale(1.02); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* Slide Navigation Dots */
+    .dots-container {
+      margin-bottom: 20px;
+    }
+
+    .dot {
+      height: 10px;
+      width: 10px;
+      margin: 0 4px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.6s ease;
+    }
+
+    .dot.active {
+      background-color: #e63946;
+      width: 20px;
+      border-radius: 5px;
+    }
+
+    /* Birthday Wish Message */
+    .message-box {
+      background: #fff0f3;
+      border-left: 4px solid #ff4d6d;
+      padding: 18px;
+      border-radius: 8px;
+      text-align: left;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #4a4a4a;
+      margin-bottom: 20px;
+    }
+
+    .message-box p {
+      margin-bottom: 10px;
+    }
+
+    .signature {
+      text-align: right;
+      font-weight: 600;
+      color: #c9184a;
+      margin-top: 10px;
+    }
+
+    /* Surprise Button */
+    .surprise-btn {
+      background: linear-gradient(45deg, #ff4d6d, #ff758f);
+      color: white;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 30px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(255, 77, 109, 0.4);
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+
+    .surprise-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 25px rgba(255, 77, 109, 0.6);
+    }
+
+    /* Modal Popup */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(5px);
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.4s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-card {
+      background: #fff;
+      padding: 30px 25px;
+      border-radius: 20px;
+      max-width: 420px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      transform: scale(0.7);
+      transition: transform 0.4s ease;
+      position: relative;
+    }
+
+    .modal-overlay.active .modal-card {
+      transform: scale(1);
+    }
+
+    .modal-card h2 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.3rem;
+      color: #ff4d6d;
+      margin-bottom: 15px;
+    }
+
+    .modal-card p {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: #555;
+      font-style: italic;
+    }
+
+    .close-btn {
+      margin-top: 20px;
+      background: #ff4d6d;
+      color: white;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 20px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* Floating Heart Animation */
+    .heart {
+      position: absolute;
+      bottom: -100px;
+      background-color: rgba(255, 77, 109, 0.5);
+      display: inline-block;
+      height: 30px;
+      width: 30px;
+      transform: rotate(-45deg);
+      animation: floatUp 7s linear infinite;
+      z-index: 1;
+    }
+
+    .heart:before, .heart:after {
+      content: "";
+      background-color: rgba(255, 77, 109, 0.5);
+      border-radius: 50%;
+      height: 30px;
+      position: absolute;
+      width: 30px;
+    }
+
+    .heart:before { top: -15px; left: 0; }
+    .heart:after { left: 15px; top: 0; }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) rotate(-45deg) scale(0.6); opacity: 0.8; }
+      100% { transform: translateY(-110vh) rotate(-45deg) scale(1.2); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Automatic Background Music Player -->
+  <audio id="bg-music" autoplay loop>
+    <!-- REPLACE 'song.mp3' WITH YOUR SONG FILE NAME -->
+    <source src="song.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Background Hearts -->
+  <div id="hearts-container"></div>
+
+  <!-- Main Website Content -->
+  <div class="container">
+    <h1>Happy Birthday, Suparna! 🎉❤️</h1>
+    <p class="subtitle">Wishing the most wonderful birthday to my favorite person</p>
+
+    <!-- Automatic Photo Slideshow -->
+    <div class="slideshow-container">
+      <div class="slide">
+        <img src="photo1.jpg.jpeg" alt="Suparna photo 1">
+      </div>
+      <div class="slide">
+        <img src="photo2.jpg.jpeg" alt="Suparna photo 2">
+      </div>
+      <div class="slide">
+        <img src="photo3.jpg.jpeg" alt="Suparna photo 3">
+      </div>
+    </div>
+
+    <!-- Dots corresponding to slides -->
+    <div class="dots-container">
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+
+    <!-- Heartfelt Wish -->
+    <div class="message-box">
+      <p>Dearest Suparna,</p>
+      <p>On your special day, I just want to remind you how much brightness and happiness you bring into my life. Every moment shared with you is a memory I hold dear.</p>
+      <p>May your year ahead be full of endless smiles, health, success, and all the joy your heart can hold!</p>
+      <p class="signature">Forever yours ❤️</p>
+    </div>
+
+    <!-- Surprise Button -->
+    <button class="surprise-btn" onclick="openSurprise()">🎁 Click for a Special Surprise!</button>
+  </div>
+
+  <!-- Surprise Modal -->
+  <div class="modal-overlay" id="surprise-modal">
+    <div class="modal-card">
+      <h2>💖 Special Wish for You 💖</h2>
+      <p>"In a world full of temporary things, you are my favorite constant. Being with you makes every ordinary day feel extraordinary. Thank you for being my light, Suparna! Happy Birthday my Love! ✨🌸"</p>
+      <button class="close-btn" onclick="closeSurprise()">Close ❤️</button>
+    </div>
+  </div>
+
+  <script>
+    // --- Automatic Slideshow Logic ---
+    let slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+      let i;
+      let slides = document.getElementsByClassName("slide");
+      let dots = document.getElementsByClassName("dot");
+
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";  
+      }
+
+      slideIndex++;
+      if (slideIndex > slides.length) { slideIndex = 1 }    
+
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+
+      if (slides[slideIndex - 1]) {
+        slides[slideIndex - 1].style.display = "block";  
+        dots[slideIndex - 1].className += " active";
+      }
+
+      setTimeout(showSlides, 3500); 
+    }
+
+    // --- Floating Hearts Generator ---
+    function createHearts() {
+      const heartsContainer = document.getElementById('hearts-container');
+      const heartCount = 15;
+
+      for (let i = 0; i < heartCount; i++) {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+        heart.style.animationDelay = Math.random() * 5 + 's';
+        heartsContainer.appendChild(heart);
+      }
+    }
+    createHearts();
+
+    // --- Autoplay Music Logic ---
+    const music = document.getElementById("bg-music");
+
+    // Try playing immediately on load
+    window.addEventListener('DOMContentLoaded', () => {
+      music.play().catch(error => {
+        console.log("Autoplay blocked by browser. Music will play on first click.");
+      });
+    });
+
+    // Fallback: Play music on first click/tap anywhere on screen if autoplay was blocked
+    document.addEventListener('click', function startMusic() {
+      music.play();
+      document.removeEventListener('click', startMusic);
+    }, { once: true });
+
+    // --- Surprise Modal Logic ---
+    function openSurprise() {
+      document.getElementById("surprise-modal").classList.add("active");
+    }
+
+    function closeSurprise() {
+      document.getElementById("surprise-modal").classList.remove("active");
+    }
+  </script>
+</body>
+</html>
